@@ -32,7 +32,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/Curah_Hujan_Desa_Mranggen_1.js"></script>
+        <script src="data/Kecamatan_Mranggen_1.js"></script>
+        <script src="data/Curah_Hujan_Desa_Mranggen_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -52,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-7.061587869003802,110.47316761376408],[-7.011106268734887,110.55231850692576]]);
+        }).fitBounds([[-7.0529391675163655,110.47979631182484],[-7.002113304793873,110.55948470500142]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -84,7 +85,364 @@
         });
         layer_satelitegoogle_0;
         map.addLayer(layer_satelitegoogle_0);
-        function pop_Curah_Hujan_Desa_Mranggen_1(feature, layer) {
+        function pop_Kecamatan_Mranggen_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['objectid'] !== null ? autolinker.link(feature.properties['objectid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['provinsi'] !== null ? autolinker.link(feature.properties['provinsi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['kabupaten'] !== null ? autolinker.link(feature.properties['kabupaten'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['kecamatan'] !== null ? autolinker.link(feature.properties['kecamatan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['desa'] !== null ? autolinker.link(feature.properties['desa'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['kode_dagri'] !== null ? autolinker.link(feature.properties['kode_dagri'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_leng'] !== null ? autolinker.link(feature.properties['shape_leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_area'] !== null ? autolinker.link(feature.properties['shape_area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Kepadatan'] !== null ? autolinker.link(feature.properties['Kepadatan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Class'] !== null ? autolinker.link(feature.properties['Class'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['luas_ha'] !== null ? autolinker.link(feature.properties['luas_ha'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Kecamatan_Mranggen_1_0(feature) {
+            switch(String(feature.properties['desa'])) {
+                case 'Bandungrejo':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,228,130,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banyumeneng':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,70,218,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Batursari':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,214,46,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Brumbung':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,47,204,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Candisari':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,48,209,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Jamus':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(106,216,135,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kalitengah':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,25,237,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kangkung':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,83,180,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Karangsono':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,218,180,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kebonbatur':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,178,202,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kembangarum':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(54,226,48,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Menur':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,220,195,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mranggen':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(161,223,53,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ngemplak':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,169,48,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberejo':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,83,53,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tamansari':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(180,103,218,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tegalarum':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,31,57,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Waru':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,128,169,0.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wringinjajar':
+                    return {
+                pane: 'pane_Kecamatan_Mranggen_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,103,15,0.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Kecamatan_Mranggen_1');
+        map.getPane('pane_Kecamatan_Mranggen_1').style.zIndex = 401;
+        map.getPane('pane_Kecamatan_Mranggen_1').style['mix-blend-mode'] = 'normal';
+        var layer_Kecamatan_Mranggen_1 = new L.geoJson(json_Kecamatan_Mranggen_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Kecamatan_Mranggen_1',
+            layerName: 'layer_Kecamatan_Mranggen_1',
+            pane: 'pane_Kecamatan_Mranggen_1',
+            onEachFeature: pop_Kecamatan_Mranggen_1,
+            style: style_Kecamatan_Mranggen_1_0,
+        });
+        bounds_group.addLayer(layer_Kecamatan_Mranggen_1);
+        map.addLayer(layer_Kecamatan_Mranggen_1);
+        function pop_Curah_Hujan_Desa_Mranggen_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -144,11 +502,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Curah_Hujan_Desa_Mranggen_1_0(feature) {
+        function style_Curah_Hujan_Desa_Mranggen_2_0(feature) {
             switch(String(feature.properties['class'])) {
                 case '<1500 mm/tahun':
                     return {
-                pane: 'pane_Curah_Hujan_Desa_Mranggen_1',
+                pane: 'pane_Curah_Hujan_Desa_Mranggen_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -157,13 +515,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(77,79,225,1.0)',
+                fillColor: 'rgba(199,187,255,1.0)',
                 interactive: true,
             }
                     break;
                 case '1501- 2000 mm/tahun':
                     return {
-                pane: 'pane_Curah_Hujan_Desa_Mranggen_1',
+                pane: 'pane_Curah_Hujan_Desa_Mranggen_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -172,29 +530,65 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(38,4,189,1.0)',
+                fillColor: 'rgba(131,103,255,1.0)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_Curah_Hujan_Desa_Mranggen_1');
-        map.getPane('pane_Curah_Hujan_Desa_Mranggen_1').style.zIndex = 401;
-        map.getPane('pane_Curah_Hujan_Desa_Mranggen_1').style['mix-blend-mode'] = 'normal';
-        var layer_Curah_Hujan_Desa_Mranggen_1 = new L.geoJson(json_Curah_Hujan_Desa_Mranggen_1, {
+        map.createPane('pane_Curah_Hujan_Desa_Mranggen_2');
+        map.getPane('pane_Curah_Hujan_Desa_Mranggen_2').style.zIndex = 402;
+        map.getPane('pane_Curah_Hujan_Desa_Mranggen_2').style['mix-blend-mode'] = 'normal';
+        var layer_Curah_Hujan_Desa_Mranggen_2 = new L.geoJson(json_Curah_Hujan_Desa_Mranggen_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Curah_Hujan_Desa_Mranggen_1',
-            layerName: 'layer_Curah_Hujan_Desa_Mranggen_1',
-            pane: 'pane_Curah_Hujan_Desa_Mranggen_1',
-            onEachFeature: pop_Curah_Hujan_Desa_Mranggen_1,
-            style: style_Curah_Hujan_Desa_Mranggen_1_0,
+            dataVar: 'json_Curah_Hujan_Desa_Mranggen_2',
+            layerName: 'layer_Curah_Hujan_Desa_Mranggen_2',
+            pane: 'pane_Curah_Hujan_Desa_Mranggen_2',
+            onEachFeature: pop_Curah_Hujan_Desa_Mranggen_2,
+            style: style_Curah_Hujan_Desa_Mranggen_2_0,
         });
-        bounds_group.addLayer(layer_Curah_Hujan_Desa_Mranggen_1);
-        map.addLayer(layer_Curah_Hujan_Desa_Mranggen_1);
+        bounds_group.addLayer(layer_Curah_Hujan_Desa_Mranggen_2);
+        map.addLayer(layer_Curah_Hujan_Desa_Mranggen_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Curah_Hujan_Desa_Mranggen<br /><table><tr><td style="text-align: center;"><img src="legend/Curah_Hujan_Desa_Mranggen_1_1500mmtahun0.png" /></td><td><1500 mm/tahun</td></tr><tr><td style="text-align: center;"><img src="legend/Curah_Hujan_Desa_Mranggen_1_15012000mmtahun1.png" /></td><td>1501- 2000 mm/tahun</td></tr></table>': layer_Curah_Hujan_Desa_Mranggen_1,"satelite google": layer_satelitegoogle_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Curah_Hujan_Desa_Mranggen<br /><table><tr><td style="text-align: center;"><img src="legend/Curah_Hujan_Desa_Mranggen_2_1500mmtahun0.png" /></td><td><1500 mm/tahun</td></tr><tr><td style="text-align: center;"><img src="legend/Curah_Hujan_Desa_Mranggen_2_15012000mmtahun1.png" /></td><td>1501- 2000 mm/tahun</td></tr></table>': layer_Curah_Hujan_Desa_Mranggen_2,'Kecamatan_Mranggen<br /><table><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Bandungrejo0.png" /></td><td>Bandungrejo</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Banyumeneng1.png" /></td><td>Banyumeneng</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Batursari2.png" /></td><td>Batursari</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Brumbung3.png" /></td><td>Brumbung</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Candisari4.png" /></td><td>Candisari</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Jamus5.png" /></td><td>Jamus</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Kalitengah6.png" /></td><td>Kalitengah</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Kangkung7.png" /></td><td>Kangkung</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Karangsono8.png" /></td><td>Karangsono</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Kebonbatur9.png" /></td><td>Kebonbatur</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Kembangarum10.png" /></td><td>Kembangarum</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Menur11.png" /></td><td>Menur</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Mranggen12.png" /></td><td>Mranggen</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Ngemplak13.png" /></td><td>Ngemplak</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Sumberejo14.png" /></td><td>Sumberejo</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Tamansari15.png" /></td><td>Tamansari</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Tegalarum16.png" /></td><td>Tegalarum</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Waru17.png" /></td><td>Waru</td></tr><tr><td style="text-align: center;"><img src="legend/Kecamatan_Mranggen_1_Wringinjajar18.png" /></td><td>Wringinjajar</td></tr></table>': layer_Kecamatan_Mranggen_1,"satelite google": layer_satelitegoogle_0,}).addTo(map);
         setBounds();
+        var i = 0;
+        layer_Kecamatan_Mranggen_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['desa'] !== null?String('<div style="color: #ffffff; font-size: 10pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['desa']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Kecamatan_Mranggen_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Curah_Hujan_Desa_Mranggen_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['class'] !== null?String('<div style="color: #ffffff; font-size: 10pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['class']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Curah_Hujan_Desa_Mranggen_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Kecamatan_Mranggen_1,layer_Curah_Hujan_Desa_Mranggen_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Kecamatan_Mranggen_1,layer_Curah_Hujan_Desa_Mranggen_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Kecamatan_Mranggen_1,layer_Curah_Hujan_Desa_Mranggen_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Kecamatan_Mranggen_1,layer_Curah_Hujan_Desa_Mranggen_2]);
+        });
         </script>
     </body>
 </html>
